@@ -23,7 +23,7 @@ class CreateOrdDetailsTable extends Migration
 
             $table->unsignedBigInteger('users_id');
             $table->foreign('users_id')->references('id')->on('users');  #會員編號
-            
+
             $table->timestamps();
         });
     }
