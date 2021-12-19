@@ -20,3 +20,10 @@ Route::get('/', function () {
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
+
+Route::resource('orders', OrderController::class);
+Route::resource('products', ProductController::class);
+Route::resource('ord_details', OrdDetailController::class);
+Route::resource('managers', ManagerController::class);
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/home',[HomeController::class,'index'])->name('home.index');
