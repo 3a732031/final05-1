@@ -23,7 +23,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::resource('orders', OrderController::class);
 Route::resource('products', ProductController::class);
-Route::resource('ord.details', OrdDetailController::class)->shallow(); 
+Route::resource('ord.details', OrdDetailController::class)->shallow();
 Route::resource('managers', ManagerController::class);
 
 Route::middleware(['auth:sanctum', 'verified'])->get('/home',[HomeController::class,'index'])->name('home.index');
