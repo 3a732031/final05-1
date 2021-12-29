@@ -17,7 +17,8 @@
 <!-- Navigation-->
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container px-4 px-lg-5">
-        <a class="navbar-brand" href="#!">Start Bootstrap</a>
+        <img class="card-img-top" src="images/logo.jpg" style="width:50px;height:50px">&nbsp&nbsp
+        <a class="navbar-brand" href="#!">時尚拿著走</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
@@ -44,11 +45,11 @@
     </div>
 </nav>
 <!-- Header-->
-<header class="bg-dark py-5">
-    <div class="container px-4 px-lg-5 my-5">
+<header class="bg-dark py-5"><!--顏色-->
+    <div class="container px-4 px-lg-5 my-5" >
         <div class="text-center text-white">
-            <h1 class="display-4 fw-bolder">Shop in style</h1>
-            <p class="lead fw-normal text-white-50 mb-0">With this shop hompeage template</p>
+            <h1 class="display-4 fw-bolder">時尚拿著走-水壺購物網</h1>
+            <p class="lead fw-normal text-white-50 mb-0">「水壺」不單單只是裝水的容器而已，也是你生活中的一個小配件、時尚單品!</p>
         </div>
     </div>
 </header>
@@ -257,7 +258,11 @@
 </section>
 <!-- Footer-->
 <footer class="py-5 bg-dark">
-    <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2021</p></div>
+    <div class="container">
+        <p class="m-0 text-center text-white">Bottle 建議使用Chorme瀏覽</p>
+        <p class="m-0 text-center text-white">Copyright &copy; 2021-2022</p>
+        <p class="m-0 text-center text-white">服務時間：周一至周五09:00-17:00</p>
+    </div>
 </footer>
 <!-- Bootstrap core JS-->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
