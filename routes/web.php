@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,7 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
@@ -26,4 +26,5 @@ Route::resource('products', ProductController::class);
 Route::resource('ord.details', OrdDetailController::class)->shallow();
 Route::resource('managers', ManagerController::class);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/home',[HomeController::class,'index'])->name('home.index');
+Route::get('/home',[HomeController::class,'home'])->name('home');
+
