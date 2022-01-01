@@ -11285,4 +11285,7 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
+    .bg-info{
+        color:#FFF4C1;
+    }
 }
