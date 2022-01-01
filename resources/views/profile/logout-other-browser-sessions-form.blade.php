@@ -1,4 +1,4 @@
-<x-jet-action-section>
+=<x-jet-action-section>
     <x-slot name="title">
         {{ __('Browser Sessions') }}
     </x-slot>
