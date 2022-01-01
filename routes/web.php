@@ -14,9 +14,9 @@ use App\Http\Controllers\HomeController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
     return view('dashboard');
 })->name('dashboard');
@@ -28,5 +28,5 @@ Route::resource('managers', ManagerController::class);
 
 Route::get('/logout',[\App\Http\Controllers\UserController::class,'logout'])->name('user.logout');
 
-Route::get('/home',[HomeController::class,'home'])->name('home');
+Route::get('/',[HomeController::class,'home'])->name('home');
 
