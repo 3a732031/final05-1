@@ -8,7 +8,16 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
-
+    protected $table = 'products';
+    protected $fillable = [
+        'id',
+        'name',
+        'ctg' ,
+        'price' ,
+        'invt' ,
+        'color'  ,
+        'image' ,
+    ];
     public function manager(){
         return $this -> belongsTo(manager::class);
     }
