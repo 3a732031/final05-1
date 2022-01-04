@@ -7,6 +7,7 @@ use App\Http\Requests\StoreProductRequest;
 use App\Http\Requests\UpdateProductRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\request;
 
 class ProductController extends Controller
 {
@@ -87,7 +88,7 @@ class ProductController extends Controller
     }
     public function product()
     {
-        $data = DB::table('products')->get();
+        $data = DB::table('products')->paginate(8);
         return view('product', ['product' => $data]);
     }
 }

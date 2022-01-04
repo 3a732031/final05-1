@@ -29,9 +29,14 @@
                         </div>
                     </div>
                 @endforeach
+
             </div>
         </div>
+        <div class="pagination justify-content-center">
+            {{$product->links()}}
+        </div>
     </section>
+
 
 
 @endsection
