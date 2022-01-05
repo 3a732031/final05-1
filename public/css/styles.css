@@ -530,6 +530,7 @@ progress {
   font-weight: 300;
   line-height: 1.2;
 }
+
 @media (min-width: 1200px) {
   .display-4 {
     font-size: 3.5rem;
@@ -4048,6 +4049,7 @@ textarea.form-control-lg {
   align-items: center;
   justify-content: space-between;
 }
+
 .navbar-brand {
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
@@ -7803,6 +7805,22 @@ textarea.form-control-lg {
 
 .text-opacity-100 {
   --bs-text-opacity: 1;
+}
+
+.bg-1{
+    background-color: #355718;
+}
+
+.bg-2{
+    background-color: #E7F1E3;
+}
+
+.bg-3{
+    background-color: #E7EFE0;
+}
+
+.bg-4{
+    background-color: #DAEFD6;
 }
 
 .bg-primary {
