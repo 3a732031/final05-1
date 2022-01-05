@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Manager;
-use App\Http\Requests\StoreManagerRequest;
-use App\Http\Requests\UpdateManagerRequest;
+use App\Models\Member;
+use App\Http\Requests\StoreMemberRequest;
+use App\Http\Requests\UpdateMemberRequest;
 
-class ManagerController extends Controller
+class MemberController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,7 @@ class ManagerController extends Controller
      */
     public function index()
     {
-        return view('admin.dashboard.index');
-
+        //
     }
 
     /**
@@ -32,10 +31,10 @@ class ManagerController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreManagerRequest  $request
+     * @param  \App\Http\Requests\StoreMemberRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreManagerRequest $request)
+    public function store(StoreMemberRequest $request)
     {
         //
     }
@@ -43,10 +42,10 @@ class ManagerController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Manager  $manager
+     * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function show(Manager $manager)
+    public function show(Member $member)
     {
         //
     }
@@ -54,10 +53,10 @@ class ManagerController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Manager  $manager
+     * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function edit(Manager $manager)
+    public function edit(Member $member)
     {
         //
     }
@@ -65,11 +64,11 @@ class ManagerController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateManagerRequest  $request
-     * @param  \App\Models\Manager  $manager
+     * @param  \App\Http\Requests\UpdateMemberRequest  $request
+     * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateManagerRequest $request, Manager $manager)
+    public function update(UpdateMemberRequest $request, Member $member)
     {
         //
     }
@@ -77,12 +76,11 @@ class ManagerController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Manager  $manager
+     * @param  \App\Models\Member  $member
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Manager $manager)
+    public function destroy(Member $member)
     {
         //
     }
-
 }

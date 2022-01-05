@@ -21,6 +21,7 @@ class CreateUsersTable extends Migration
             $table->string('phone');                 #電話
             $table->date('birthday');                #生日
             $table->string('email');                 #信箱
+            $table->boolean('status')->default('0');
             $table->timestamps();
         });
     }
