@@ -22,7 +22,14 @@
                              @endif
                         @endauth
                 @endif
-                <li class="nav-item"><a class="nav-link " href="{{ route('product') }}">產品</a></li>
+                <ul class="navbar-nav navbar-right three">
+                    <li class="nav-item"><a class="nav-link dropdown-toggle id=dropdown01 data-bs-toggle=dropdown aria-expanded=false" href="{{ route('product') }}">產品</a>
+                        <li><a class=dropdown-item>所有水壺</a></li>
+                        <li><a class=dropdown-item>一般水壺</a></li>
+                        <li><a class=dropdown-item>所有水壺</a></li>
+                        <li><a class=dropdown-item>所有水壺</a></li>
+                    <li>
+                <ul>
             </ul>
         </div>
     </div>
