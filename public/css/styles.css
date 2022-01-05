@@ -7812,7 +7812,7 @@ textarea.form-control-lg {
 }
 
 .bg-2{
-    background-color: #E7F1E3;
+    background-color: #E7EFE0;
 }
 
 .bg-3{
@@ -7821,6 +7821,9 @@ textarea.form-control-lg {
 
 .bg-4{
     background-color: #DAEFD6;
+}
+.bg-5{
+    background-color: #E7F1E3;
 }
 
 .bg-primary {

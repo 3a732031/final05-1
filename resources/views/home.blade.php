@@ -2,7 +2,7 @@
 @extends('layouts.master')
 @section('content')
 <!-- Header-->
-<header class="bg-2 py-5"><!--顏色-->
+<header class="bg-5 py-5"><!--顏色-->
     <div class="container px-4 px-lg-5 my-5" >
         <div class="text-center ">
             <h1 class="display-4 fw-bolder">時尚拿著走-水壺購物網</h1>
