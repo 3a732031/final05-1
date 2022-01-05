@@ -2,7 +2,7 @@
 @extends('layouts.master')
 @section('content')
 <!-- Header-->
-<header class="bg-secondary py-5" ><!--顏色-->
+<header class="bg-2 py-5"><!--顏色-->
     <div class="container px-4 px-lg-5 my-5" >
         <div class="text-center ">
             <h1 class="display-4 fw-bolder">時尚拿著走-水壺購物網</h1>
@@ -33,7 +33,7 @@
                     </div>
                     <!-- Product actions-->
                     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                        <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">加入購物車</a></div>
+                        <div class="text-center"><a class="btn btn-outline-success mt-auto" href="#">加入購物車</a></div>
                     </div>
                 </div>
             </div>
