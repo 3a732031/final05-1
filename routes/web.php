@@ -1,8 +1,9 @@
 <?php
-
+use App\Http\Controllers\ManagerController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AdminDashboardController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -24,18 +25,19 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 
 Route::get('/logout',[\App\Http\Controllers\UserController::class,'logout'])->name('user.logout');
-Route::get('/product',[\App\Http\Controllers\ProductController::class,'product'])->name('product');
+Route::get('/product',[\App\Http\Controllers\ProductController::class,'index'])->name('product');
 
 Route::prefix('admin')->group(function () {
-    Route::get('/',[\App\Http\Controllers\ManagerController::class,'index'])->name( 'admin.dashboard.index');
+    Route::get('/',[AdminDashboardController::class,'index'])->name( 'admin.dashboard.index');
 
-    Route::get('product',[\App\Http\Controllers\ManagerController::class,'index'])->name( 'admin.posts.index');
-//    Route::get('posts/create',[\App\Http\Controllers\ManagerController::class,'create'])->name('admin.posts.create');
-//    Route::get('posts/{id}/edit',[\App\Http\Controllers\ManagerController::class,'edit'])->name('admin.posts.edit');
-//
-//    Route::post('posts',[\App\Http\Controllers\ManagerController::class,'store'])->name('admin.posts.store');
-//    Route::patch('posts/{post}', [\App\Http\Controllers\ManagerController::class, 'update'])->name('admin.posts.update');
-//    Route::delete('posts/{post}', [\App\Http\Controllers\ManagerController::class, 'destroy'])->name('admin.posts.destroy');
+    Route::get('product',[\App\Http\Controllers\ManagerController::class,'index'])->name( 'admin.product.index');
+    Route::get('product/create',[\App\Http\Controllers\ManagerController::class,'create'])->name('admin.product.create');
+    Route::get('product/{id}/edit',[\App\Http\Controllers\ManagerController::class,'edit'])->name('admin.product.edit');
+
+    Route::post('product/store',[\App\Http\Controllers\ManagerController::class,'store'])->name('admin.product.store');
+    Route::patch('product/{product}', [\App\Http\Controllers\ManagerController::class, 'update'])->name('admin.product.update');
+    Route::delete('product/{product}', [\App\Http\Controllers\ManagerController::class, 'destroy'])->name('admin.product.destroy');
 });
+
 Route::get('/',[HomeController::class,'home'])->name('home');
 

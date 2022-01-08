@@ -20,7 +20,7 @@
 
 <div class="row" style="margin-bottom: 20px; text-align: right">
     <div class="col-lg-12">
-        <a href="{{ route('admin.posts.create') }}" class="btn btn-success">建立新產品</a>
+        <a href="{{ route('admin.product.create') }}" class="btn btn-success">建立新產品</a>
     </div>
 </div>
 <!-- /.row -->
@@ -32,20 +32,30 @@
                 <thead>
                     <tr>
                         <th width="30" style="text-align: center">#</th>
-                        <th>標題</th>
-                        <th width="70" style="text-align: center">精選？</th>
-                        <th width="100" style="text-align: center">功能</th>
+                        <th width="70">產品名稱</th>
+                        <th width="40" style="text-align: center">類型</th>
+                        <th width="30" style="text-align: center">價格</th>
+                        <th width="20" style="text-align: center">庫存</th>
+                        <th width="20" style="text-align: center">顏色</th>
+                        <th width="90" style="text-align: center">圖片</th>
+                        <th width="30" style="text-align: center">狀態</th>
+                        <th width="20" style="text-align: center">功能</th>
                     </tr>
                 </thead>
                 <tbody>
-                @foreach($posts as $post)
+                @foreach($product as $products)
                     <tr>
-                        <td style="text-align: center">{{ $post->id }}</td>
-                        <td>{{ $post->title }}</td>
-                        <td style="text-align: center">{{ $post->is_feature?'V':'X' }}</td>
+                        <td style="text-align: center">{{ $products->id }}</td>
+                        <td>{{ $products->name }}</td>
+                        <td style="text-align: center">{{ $products->ctg}}</td>
+                        <td style="text-align: center">{{ $products->price}}</td>
+                        <td style="text-align: center">{{ $products->invt}}</td>
+                        <td style="text-align: center">{{ $products->color}}</td>
+                        <td>{{ $products->image}}</td>
+                        <td style="text-align: center">{{ $products->status}}</td>
                         <td>
-                            <a class="btn btn-sm btn-primary" href="{{ route('admin.posts.edit', $post->id) }}">編輯</a>
-                            <form action="/admin/posts/{{$post->id}}" method="POST" style="display: inline">
+                            <a class="btn btn-sm btn-primary" href="{{ route('admin.product.edit', $products->id) }}">編輯</a>
+                            <form action="/admin/product/{{$products->id}}" method="POST" style="display: inline">
                                 @method('DELETE')
                                 @csrf
                                 <button class="btn btn-sm btn-danger" type="submit">刪除</button>

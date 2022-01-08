@@ -21,6 +21,7 @@ class CreateProductsTable extends Migration
             $table->integer('invt');
             $table->string('color');
             $table->string('image');
+            $table->string('status');
             $table->timestamps();
         });
     }

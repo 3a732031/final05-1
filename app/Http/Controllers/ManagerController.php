@@ -5,84 +5,73 @@ namespace App\Http\Controllers;
 use App\Models\Manager;
 use App\Http\Requests\StoreManagerRequest;
 use App\Http\Requests\UpdateManagerRequest;
-
+use App\Models\Product;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+use function Illuminate\Events\queueable;
 class ManagerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        return view('admin.dashboard.index');
+        $products=Product::orderBy('id', 'ASC')->get();
+        $data=['product'=>$products];
+        return view('admin.product.index', $data);
+
 
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function create()
     {
-        //
+        return view('admin.product.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreManagerRequest  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(StoreManagerRequest $request)
+
+    public function store(Request $request)
     {
-        //
+        $products=new Product();
+
+        $products->id = $request->id;
+        $products->name =$request->name;
+        $products->ctg = $request->ctg;
+        $products->price = $request->price;
+        $products->invt = $request->invt;
+        $products->color = $request->color;
+        $products->image = $request->image;
+        $products->status = $request->status;
+        $products->save();
+
+        return redirect()->route('admin.product.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Manager  $manager
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Manager $manager)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Manager  $manager
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Manager $manager)
+
+    public function edit($id)
     {
-        //
+        $products=Product::find($id);
+        $data=['products'=>$products];
+        return view('admin.product.edit',$data);
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \App\Http\Requests\UpdateManagerRequest  $request
-     * @param  \App\Models\Manager  $manager
-     * @return \Illuminate\Http\Response
-     */
-    public function update(UpdateManagerRequest $request, Manager $manager)
+
+    public function update(Request $request,$id)
     {
-        //
+        $products=Product::find($id);
+        $products->update($request->all());
+        return redirect()->route('admin.product.index');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Manager  $manager
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Manager $manager)
+
+    public function destroy($id)
     {
-        //
+        Product::destroy($id);
+        return redirect()->route('admin.product.index');
     }
 
 }

@@ -18,7 +18,8 @@ class ProductController extends Controller
      */
     public function index()
     {
-
+        $data = DB::table('products')->paginate(8);
+        return view('product', ['product' => $data]);
     }
 
     /**
@@ -86,9 +87,6 @@ class ProductController extends Controller
     {
         //
     }
-    public function product()
-    {
-        $data = DB::table('products')->paginate(8);
-        return view('product', ['product' => $data]);
-    }
+
+
 }

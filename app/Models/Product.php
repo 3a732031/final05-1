@@ -17,7 +17,19 @@ class Product extends Model
         'invt' ,
         'color'  ,
         'image' ,
+        'status' ,
     ];
+
+    protected $casts = [
+        'name' => 'string',
+        'ctg'=> 'string',
+        'price'=> 'integer',
+        'invt'=> 'integer' ,
+        'color'=> 'string',
+        'image'=> 'string',
+        'status'=> 'string',
+    ];
+
     public function manager(){
         return $this -> belongsTo(manager::class);
     }

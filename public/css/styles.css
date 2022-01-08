@@ -11306,7 +11306,9 @@ textarea.form-control-lg {
   .d-print-none {
     display: none !important;
   }
-
+    .search-bar{
+        width: 30%;
+    }
 
 
 }
