@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
     <div class="container">
-        <img class="card-img-top" src="images/logo.jpg" style="width:50px;height:50px" >&nbsp&nbsp
+        <img class="card-img-top" src="{{ url('images/logo.jpg') }}" style="width:50px;height:50px" >&nbsp&nbsp
         <a class="navbar-brand" href="/">時尚拿著走</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <f class="collapse navbar-collapse" id="navbarSupportedContent">

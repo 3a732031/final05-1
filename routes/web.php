@@ -26,6 +26,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 
 Route::get('/logout',[\App\Http\Controllers\UserController::class,'logout'])->name('user.logout');
 Route::get('/product',[\App\Http\Controllers\ProductController::class,'index'])->name('product');
+Route::get('/product/detail/{id}',[\App\Http\Controllers\ProductController::class,'show'])->name('product.detail');
 
 Route::prefix('admin')->group(function () {
     Route::get('/',[AdminDashboardController::class,'index'])->name( 'admin.dashboard.index');
