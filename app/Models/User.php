@@ -23,6 +23,18 @@ class User extends Authenticatable
      *
      * @var string[]
      */
+
+    public function orders(){
+        return $this->hasMany(Order::class);
+    }
+    //與products關聯 多對多
+    public function products(){
+        return $this->belongsToMany(Product::class);
+    }
+    public function carts()
+    {
+        return $this->hasMany(Cart::class);
+    }
     protected $fillable = [
         'name',
         'email',
