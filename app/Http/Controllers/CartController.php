@@ -58,7 +58,7 @@ class CartController extends Controller
     public function store(Request $request)
     {
         Cart::create($request->all());
-        return redirect()->route('product')->with('status','系統提示：餐點已加入購物車');
+        return redirect()->route('product')->with('status','系統提示：已將商品加入購物車');
     }
 
     /**
@@ -69,7 +69,7 @@ class CartController extends Controller
      */
     public function show(Cart $cart)
     {
-        //
+       //
     }
 
     /**
