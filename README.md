@@ -1,66 +1,195 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# 系統畫面
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 前台
 
-## About Laravel
+### 首頁
+##### — 瀏覽一些產品
+![Imgur](https://imgur.com/afnaZgm.jpg)
+- - -
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+### 產品
+##### — 瀏覽所有產品、可在下方換頁瀏覽
+![Imgur](https://imgur.com/GL0xayi.jpg)
+- - -
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 產品詳細頁面
+##### — 查看產品詳細資訊(可加入購物車)
+![Imgur](https://imgur.com/rAOaEJi.jpg)
+- - -
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
-## Learning Laravel
+- - -
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+## 後台
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1500 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 所有商品
+##### — 查看目前所有商品
+![Imgur](https://imgur.com/STGU098.jpg)
+- - -
 
-## Laravel Sponsors
+### 商品編輯、刪除
+##### — 可編輯產品內容或刪除產品
+![Imgur](https://imgur.com/mcpup4E.jpg)
+- - -
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### 商品新增
+##### — 新增新的商品
+![Imgur](https://imgur.com/WvF6ieC.jpg)
+- - -
 
-### Premium Partners
+# 系統名稱及作用
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[CMS Max](https://www.cmsmax.com/)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-- **[Romega Software](https://romegasoftware.com)**
+## 水壺購物網
+* 顧客可以選擇商品、數量進行購買
+* 顧客在確認餐點無誤後，可以按下加入購物車
+* 管理者可以上、下架產品
+* 管理者可以編輯、新增、刪除產品
 
-## Contributing
+- - -
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+# 系統的主要功能
 
-## Code of Conduct
+## 前台 — [3A832056 沈沛儒](https://github.com/3A832056)
+* 註冊、登入 | Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+            return view('dashboard');
+            })->name('dashboard');
+* 登出      | Route::get('/logout',[\App\Http\Controllers\UserController::class,'logout'])->name('user.logout');
+* 產品頁    | Route::get('/product',[\App\Http\Controllers\ProductController::class,'index'])->name('product');
+* 產品資訊頁 | Route::get('/product/detail/{id}',[\App\Http\Controllers\ProductController::class,'show'])->name('product.detail');
+* 首頁      | Route::get('/',[HomeController::class,'home'])->name('home');
+## 後台 — [3A832056 沈沛儒](https://github.com/3A832056)
+* 主控台 | Route::prefix('admin')->group(function () {
+          Route::get('/',[AdminDashboardController::class,'index'])->name( 'admin.dashboard.index');
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+* 商品管理 | Route::get('product',[\App\Http\Controllers\ManagerController::class,'index'])->name( 'admin.product.index');
+* 新增商品 | Route::get('product/create',[\App\Http\Controllers\ManagerController::class,'create'])->name('admin.product.create');
+* 編輯商品 | Route::get('product/{id}/edit',[\App\Http\Controllers\ManagerController::class,'edit'])->name('admin.product.edit');
 
-## Security Vulnerabilities
+* 儲存商品 | Route::post('product/store',[\App\Http\Controllers\ManagerController::class,'store'])->name('admin.product.store');
+* 更新商品 | Route::patch('product/{product}', [\App\Http\Controllers\ManagerController::class, 'update'])->name('admin.product.update');
+* 刪除商品 | Route::delete('product/{product}', [\App\Http\Controllers\ManagerController::class, 'destroy'])->name('admin.product.destroy');
+});
+- - -
+## 前台 — [3A832008 朱惠淋](https://github.com/3A832008)
+* 商品加入購物車資料表 | Route::post('/cart/store',[\App\Http\Controllers\CartController::class,'store'])->name('cart.store');
+- - -
+```
+#前台
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+#登入/註冊
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');
+#登出
+Route::get('/logout',[\App\Http\Controllers\UserController::class,'logout'])->name('user.logout');
+#產品頁面
+Route::get('/product',[\App\Http\Controllers\ProductController::class,'index'])->name('product');
+#產品詳細頁面
+Route::get('/product/detail/{id}',[\App\Http\Controllers\ProductController::class,'show'])->name('product.detail');
+#首頁
+Route::get('/',[HomeController::class,'home'])->name('home');
+#商品加入購物車資料表
+Route::post('/cart/store',[\App\Http\Controllers\CartController::class,'store'])->name('cart.store');
 
-## License
+#後台
+Route::prefix('admin')->group(function () {
+    #主控台
+    Route::get('/',[AdminDashboardController::class,'index'])->name( 'admin.dashboard.index');
+    #商品管理
+    Route::get('product',[\App\Http\Controllers\ManagerController::class,'index'])->name( 'admin.product.index');
+    #新增商品
+    Route::get('product/create',[\App\Http\Controllers\ManagerController::class,'create'])->name('admin.product.create');
+    #編輯商品
+    Route::get('product/{id}/edit',[\App\Http\Controllers\ManagerController::class,'edit'])->name('admin.product.edit');
+    #儲存商品
+    Route::post('product/store',[\App\Http\Controllers\ManagerController::class,'store'])->name('admin.product.store');
+    #更新商品
+    Route::patch('product/{product}', [\App\Http\Controllers\ManagerController::class, 'update'])->name('admin.product.update');
+    #刪除商品
+    Route::delete('product/{product}', [\App\Http\Controllers\ManagerController::class, 'destroy'])->name('admin.product.destroy');
+});
+```
+- - -
+## ERD
+![Imgur](https://imgur.com/COqn6CZ.png)
+- - -
+## 關聯式綱要圖
+![Imgur](https://imgur.com/VST3Euu.png)
+- - -
+## 資料表欄位設計
+![Imgur](https://imgur.com/BaPSYkO.jpg)
+- - -
+![Imgur](https://imgur.com/yMpfw4D.jpg)
+- - -
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# 初始專案與DB負責的同學
+* 初始專案、資料庫建立、資料庫關聯 — [3A832056 沈沛儒](https://github.com/3A832056)
+* 資料庫關聯 — [3A832008 朱惠淋](https://github.com/3A832008)
+ - - -
+# 額外使用的套件或樣板
+* 前台樣板 — 使用極簡風格的[shop-homepage](https://startbootstrap.com/template/shop-homepage)
+* 使用套件：
+    * doctrine/dbal — 修改資料庫欄位
+- - -
+# 系統測試資料存放位置
+#### 本專案資料夾final05底下的final05.sql
+- - -
+# 系統復原
+##### 1.複製在Github的專案 https://github.com/WISD-2021/final05.git ，打開Cmder，在www底下輸入：
+    git clone https://github.com/WISD-2021/final05.git 
+
+##### 2.進入專案資料夾
+    cd final05
+
+##### 3.復原專案三步驟
+    composer install
+    composer run-script post-root-package-install
+    composer run-script post-create-project-cmd
+
+##### 4.打開專案的.env檔案，修改資料庫IP、Port、名稱、密碼及資料庫
+    DB_CONNECTION=mysql
+    DB_HOST=127.0.0.1
+    DB_PORT=33060
+    DB_DATABASE=final05
+    DB_USERNAME=root
+    DB_PASSWORD=root
+
+##### 5.登入Adminer，在Admin內匯入final01專案的final01.sql
+    資料庫系統：MySQL
+    伺服器：localhost:33060
+    帳號：root
+    密碼：root
+
+##### 6.修改UwAmp的Document Root
+    {DOCUMENTPATH}/final05/public
+- - -
+# 系統使用者測試帳號
+
+## 前台
+##### 會員
+    帳號：aaa@gmail.com
+    密碼：12345678
+- - -
+## 後台
+##### 管理者
+    帳號：admin@gmail.com
+    密碼：123qweasd
+- - -
+# 系統開發人員與工作分配
+
+## 前台 — [3A832056 沈沛儒](https://github.com/3A832056)
+    ．首頁
+    ．產品
+    ．產品資訊
+    ．登入登出註冊
+## 後台 — [3A832056 沈沛儒](https://github.com/3A832056)
+    ．主控台
+    ．商品管理
+    
+    ．README編寫
+ - - -
+## 前台 — [3A832008 朱惠淋](https://github.com/3A832008)
+    ．商品加入購物車資料表
+
+    ．README編寫
