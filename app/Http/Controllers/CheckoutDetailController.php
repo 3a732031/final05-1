@@ -2,15 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Order;
-use App\Models\Item;
-use App\Http\Requests\StoreOrderRequest;
-use App\Http\Requests\UpdateOrderRequest;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+use App\Models\Checkout_detail;
+use App\Http\Requests\StoreCheckout_detailRequest;
+use App\Http\Requests\UpdateCheckout_detailRequest;
 
-class OrderController extends Controller
+class CheckoutDetailController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -19,11 +15,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $name=Auth::user()->id;
-        $orders=Order::where('users_id',$name)->get();
-        $data=['orders'=>$orders];
-        #dd($data);
-        return view('order.index',$data);
+        //
     }
 
     /**
@@ -39,10 +31,10 @@ class OrderController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreOrderRequest  $request
+     * @param  \App\Http\Requests\StoreCheckout_detailRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreOrderRequest $request)
+    public function store(StoreCheckout_detailRequest $request)
     {
         //
     }
@@ -50,10 +42,10 @@ class OrderController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Checkout_detail  $checkout_detail
      * @return \Illuminate\Http\Response
      */
-    public function show(Order $order)
+    public function show(Checkout_detail $checkout_detail)
     {
         //
     }
@@ -61,10 +53,10 @@ class OrderController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Checkout_detail  $checkout_detail
      * @return \Illuminate\Http\Response
      */
-    public function edit(Order $order)
+    public function edit(Checkout_detail $checkout_detail)
     {
         //
     }
@@ -72,11 +64,11 @@ class OrderController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateOrderRequest  $request
-     * @param  \App\Models\Order  $order
+     * @param  \App\Http\Requests\UpdateCheckout_detailRequest  $request
+     * @param  \App\Models\Checkout_detail  $checkout_detail
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateOrderRequest $request, Order $order)
+    public function update(UpdateCheckout_detailRequest $request, Checkout_detail $checkout_detail)
     {
         //
     }
@@ -84,10 +76,10 @@ class OrderController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Order  $order
+     * @param  \App\Models\Checkout_detail  $checkout_detail
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Order $order)
+    public function destroy(Checkout_detail $checkout_detail)
     {
         //
     }

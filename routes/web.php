@@ -35,6 +35,16 @@ Route::get('/product/detail/{id}',[\App\Http\Controllers\ProductController::clas
 Route::get('/',[HomeController::class,'home'])->name('home');
 #商品加入購物車資料表
 Route::post('/cart/store',[\App\Http\Controllers\CartController::class,'store'])->name('cart.store');
+#購物車頁面
+Route::get('/cart/index',[\App\Http\Controllers\CartController::class,'index'])->name('cart.index');
+#從購物車刪除商品
+Route::delete('/cart/destroy/{id}',[\App\Http\Controllers\CartController::class,'destroy'])->name('cart.destroy');
+#結帳頁面
+Route::get('/cart/checkout',[\App\Http\Controllers\CartController::class,'checkout'])->name('cart.checkout');
+#送出訂單
+Route::get('/cart/end',[\App\Http\Controllers\CartController::class,'end'])->name('cart.end');
+#訂單頁面
+Route::get('/order',[\App\Http\Controllers\OrderController::class,'index'])->name('order');
 
 #後台
 Route::prefix('admin')->group(function () {
