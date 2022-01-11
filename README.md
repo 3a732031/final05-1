@@ -17,7 +17,19 @@
 ![Imgur](https://imgur.com/rAOaEJi.jpg)
 - - -
 
+### 購物車
+##### — 查看加入購物車的產品
+![Imgur](https://imgur.com/O840LRm.jpg)
+- - -
 
+### 結帳
+##### — 查看要結帳的商品
+![Imgur](https://imgur.com/kW5Xfxm.jpg)
+- - -
+
+### 訂單資訊
+##### — 查看訂購的訂單
+![Imgur](https://imgur.com/dOFFcq4.jpg)
 - - -
 
 ## 後台
@@ -42,6 +54,8 @@
 ## 水壺購物網
 * 顧客可以選擇商品、數量進行購買
 * 顧客在確認餐點無誤後，可以按下加入購物車
+* 可察看購物車內容、結帳
+* 可察看訂單資訊
 * 管理者可以上、下架產品
 * 管理者可以編輯、新增、刪除產品
 
@@ -57,6 +71,12 @@
 * 產品頁    | Route::get('/product',[\App\Http\Controllers\ProductController::class,'index'])->name('product');
 * 產品資訊頁 | Route::get('/product/detail/{id}',[\App\Http\Controllers\ProductController::class,'show'])->name('product.detail');
 * 首頁      | Route::get('/',[HomeController::class,'home'])->name('home');
+* 購物車頁面 | Route::get('/cart/index',[\App\Http\Controllers\CartController::class,'index'])->name('cart.index');
+* 購物車刪除商品 | Route::delete('/cart/destroy/{id}',[\App\Http\Controllers\CartController::class,'destroy'])->name('cart.destroy');
+* 結帳頁面 | Route::get('/cart/checkout',[\App\Http\Controllers\CartController::class,'checkout'])->name('cart.checkout');
+* 送出訂單 | Route::get('/cart/end',[\App\Http\Controllers\CartController::class,'end'])->name('cart.end');
+* 訂單頁面 | Route::get('/order',[\App\Http\Controllers\OrderController::class,'index'])->name('order');
+
 ## 後台 — [3A832056 沈沛儒](https://github.com/3A832056)
 * 主控台 | Route::prefix('admin')->group(function () {
           Route::get('/',[AdminDashboardController::class,'index'])->name( 'admin.dashboard.index');
@@ -90,6 +110,16 @@ Route::get('/product/detail/{id}',[\App\Http\Controllers\ProductController::clas
 Route::get('/',[HomeController::class,'home'])->name('home');
 #商品加入購物車資料表
 Route::post('/cart/store',[\App\Http\Controllers\CartController::class,'store'])->name('cart.store');
+#購物車頁面
+Route::get('/cart/index',[\App\Http\Controllers\CartController::class,'index'])->name('cart.index');
+#從購物車刪除商品
+Route::delete('/cart/destroy/{id}',[\App\Http\Controllers\CartController::class,'destroy'])->name('cart.destroy');
+#結帳頁面
+Route::get('/cart/checkout',[\App\Http\Controllers\CartController::class,'checkout'])->name('cart.checkout');
+#送出訂單
+Route::get('/cart/end',[\App\Http\Controllers\CartController::class,'end'])->name('cart.end');
+#訂單頁面
+Route::get('/order',[\App\Http\Controllers\OrderController::class,'index'])->name('order');
 
 #後台
 Route::prefix('admin')->group(function () {
@@ -183,6 +213,9 @@ Route::prefix('admin')->group(function () {
     ．產品
     ．產品資訊
     ．登入登出註冊
+    ．購物車
+    ．結帳
+    ．訂單資訊
 ## 後台 — [3A832056 沈沛儒](https://github.com/3A832056)
     ．主控台
     ．商品管理

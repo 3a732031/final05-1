@@ -22,6 +22,25 @@ CREATE TABLE `carts` (
   CONSTRAINT `carts_users_id_foreign` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `carts` (`id`, `users_id`, `products_id`, `amount`, `created_at`, `updated_at`) VALUES
+(6,	4,	4,	1,	'2022-01-11 09:52:42',	'2022-01-11 09:52:42');
+
+DROP TABLE IF EXISTS `checkout_details`;
+CREATE TABLE `checkout_details` (
+  `orders_id` bigint(20) unsigned NOT NULL,
+  `products_id` bigint(20) unsigned NOT NULL,
+  `amount` int(11) NOT NULL,
+  `total` int(11) NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  KEY `checkout_details_orders_id_foreign` (`orders_id`),
+  CONSTRAINT `checkout_details_orders_id_foreign` FOREIGN KEY (`orders_id`) REFERENCES `orders` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+INSERT INTO `checkout_details` (`orders_id`, `products_id`, `amount`, `total`, `created_at`, `updated_at`) VALUES
+(2,	4,	1,	499,	'2022-01-11 09:05:06',	'2022-01-11 09:05:06'),
+(3,	3,	2,	399,	'2022-01-11 09:34:52',	'2022-01-11 09:34:52'),
+(4,	3,	1,	399,	'2022-01-11 09:49:36',	'2022-01-11 09:49:36');
 
 DROP TABLE IF EXISTS `failed_jobs`;
 CREATE TABLE `failed_jobs` (
@@ -78,7 +97,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (9,	'2021_12_19_142836_create_ord_details_table',	1),
 (10,	'2021_12_19_143324_create_managers_table',	1),
 (11,	'2022_01_05_021030_create_members_table',	1),
-(12,	'2022_01_11_091412_create_carts_table',	2);
+(12,	'2022_01_11_091412_create_carts_table',	2),
+(13,	'2022_01_11_163825_add_orders_user_id',	3),
+(14,	'2022_01_11_170134_create_checkout_details_table',	4);
 
 DROP TABLE IF EXISTS `orders`;
 CREATE TABLE `orders` (
@@ -88,9 +109,17 @@ CREATE TABLE `orders` (
   `status` text COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `users_id` bigint(20) unsigned NOT NULL,
+  `qty` int(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `orders_users_id_foreign` (`users_id`),
+  CONSTRAINT `orders_users_id_foreign` FOREIGN KEY (`users_id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
+INSERT INTO `orders` (`id`, `date`, `sum`, `status`, `created_at`, `updated_at`, `users_id`, `qty`) VALUES
+(2,	'2022-01-11',	499,	'未完成',	'2022-01-11 09:05:06',	'2022-01-11 09:05:06',	4,	0),
+(3,	'2022-01-11',	798,	'未完成',	'2022-01-11 09:34:52',	'2022-01-11 09:34:52',	4,	0),
+(4,	'2022-01-11',	399,	'未完成',	'2022-01-11 09:49:36',	'2022-01-11 09:49:36',	4,	0);
 
 DROP TABLE IF EXISTS `ord_details`;
 CREATE TABLE `ord_details` (
@@ -189,7 +218,7 @@ CREATE TABLE `sessions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('nKWNXps872JUXmGkH1X9x5i4g9M8vpAE056eYPnH',	NULL,	'::1',	'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36',	'YTo0OntzOjM6InVybCI7YToxOntzOjg6ImludGVuZGVkIjtzOjIxOiJodHRwOi8vbG9jYWxob3N0OjgwMDAiO31zOjk6Il9wcmV2aW91cyI7YToxOntzOjM6InVybCI7czoyNzoiaHR0cDovL2xvY2FsaG9zdDo4MDAwL2xvZ2luIjt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czo2OiJfdG9rZW4iO3M6NDA6ImtjUWhtUkFMTUVVSFVOUGI0UWp0NG5ybzF6Sno3anJqS0poS3hjU0siO30=',	1641903679);
+('08KedmeFLvkEEyXtwI8Lzo3fZ0Nl6Uo5U9HSNQIP',	4,	'::1',	'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/96.0.4664.110 Safari/537.36',	'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiVkt3eXJmUXlObzhsUVRZcDZUTW1hRnF1V0JLRjVaNzBWVVJWWTFjRyI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzU6Imh0dHA6Ly9sb2NhbGhvc3Q6ODAwMC9jYXJ0L2NoZWNrb3V0Ijt9czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czoxNzoicGFzc3dvcmRfaGFzaF93ZWIiO3M6NjA6IiQyeSQxMCRKSHFXdlJvMEMzOXlhZENuNWJGSGwuYnBtc3dEb3RtQkZBRmVKQ2x2NjF2cHV0V1U2SU1oLiI7czo1MDoibG9naW5fd2ViXzU5YmEzNmFkZGMyYjJmOTQwMTU4MGYwMTRjN2Y1OGVhNGUzMDk4OWQiO2k6NDt9',	1641923569);
 
 DROP TABLE IF EXISTS `users`;
 CREATE TABLE `users` (
@@ -212,4 +241,4 @@ INSERT INTO `users` (`id`, `name`, `password`, `two_factor_secret`, `two_factor_
 (1,	'admin',	'$2y$10$/Xp91weXxqSQWIZzl9PEc.2YV0Bw8T6KbOAa/hU1idklCeDDLow.a',	NULL,	NULL,	'aaa',	'12345678',	'2022-01-12',	'admin@gmail.com',	1,	'2022-01-08 04:12:00',	'2022-01-08 04:12:00'),
 (4,	'aaa',	'$2y$10$JHqWvRo0C39yadCn5bFHl.bpmswDotmBFAFeJClv61vputWU6IMh.',	NULL,	NULL,	'11111',	'11111',	'2022-01-06',	'aaa@gmail.com',	0,	'2022-01-11 04:21:18',	'2022-01-11 04:21:18');
 
--- 2022-01-11 12:22:00
+-- 2022-01-11 17:59:45
