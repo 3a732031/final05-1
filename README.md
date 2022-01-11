@@ -191,5 +191,7 @@ Route::prefix('admin')->group(function () {
  - - -
 ## 前台 — [3A832008 朱惠淋](https://github.com/3A832008)
     ．商品加入購物車資料表
+    ．前台外觀設計
 
     ．README編寫
+
