@@ -2,68 +2,63 @@
 
 ## 前台
 
-### 首頁
-##### — 瀏覽一些產品
-![Imgur](https://imgur.com/afnaZgm.jpg)
+### 首頁(未登入)
+![Imgur](https://imgur.com/H0Tm34m)
+- - -
+### 首頁(登入)
+![Imgur](https://imgur.com/TvvaKKe)
+- - -
+### 關於
+![Imgur](https://imgur.com/tkm81r1)
+- - -
+### 器材
+##### — 瀏覽所有器材
+![Imgur](https://imgur.com/r2QNvIe)
 - - -
 
-### 產品
-##### — 瀏覽所有產品、可在下方換頁瀏覽
-![Imgur](https://imgur.com/GL0xayi.jpg)
+##### — 器材加入購物車
+![Imgur](https://imgur.com/HO0eDuu)
 - - -
 
-### 產品詳細頁面
-##### — 查看產品詳細資訊(可加入購物車)
-![Imgur](https://imgur.com/rAOaEJi.jpg)
+### 個人資料頁面
+##### — 查看個人資料
+![Imgur](https://imgur.com/JkTlIos)
+- - -
+##### — 編輯個人資料
+![Imgur](https://imgur.com/JszTISt)
 - - -
 
-### 購物車
-##### — 查看加入購物車的產品
-![Imgur](https://imgur.com/O840LRm.jpg)
-- - -
-
-### 結帳
-##### — 查看要結帳的商品
-![Imgur](https://imgur.com/kW5Xfxm.jpg)
-- - -
-
-### 訂單資訊
-##### — 查看訂購的訂單
-![Imgur](https://imgur.com/dOFFcq4.jpg)
-- - -
 
 ## 後台
 
-### 所有商品
-##### — 查看目前所有商品
-![Imgur](https://imgur.com/STGU098.jpg)
+### 所有器材
+##### — 查看目前所有器材
+![Imgur](https://imgur.com/LaLoc25)
 - - -
 
-### 商品編輯、刪除
-##### — 可編輯產品內容或刪除產品
-![Imgur](https://imgur.com/mcpup4E.jpg)
+### 器材編輯、刪除
+##### — 可編輯器材內容或刪除器材
+![Imgur](https://imgur.com/FKqzsCl)
 - - -
 
 ### 商品新增
 ##### — 新增新的商品
-![Imgur](https://imgur.com/WvF6ieC.jpg)
+![Imgur](https://imgur.com/XhdixgO)
 - - -
 
 # 系統名稱及作用
 
-## 水壺購物網
+## 登山露營器具租借
 * 顧客可以選擇商品、數量進行購買
 * 顧客在確認餐點無誤後，可以按下加入購物車
-* 可察看購物車內容、結帳
-* 可察看訂單資訊
-* 管理者可以上、下架產品
 * 管理者可以編輯、新增、刪除產品
+* 管理者可以管理會員
 
 - - -
 
 # 系統的主要功能
 
-## 前台 — [3A832056 沈沛儒](https://github.com/3A832056)
+## 前台 — [3A732031 陳靖媛](https://github.com/3A732031)
 * 註冊、登入 | Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
             return view('dashboard');
             })->name('dashboard');
@@ -141,15 +136,15 @@ Route::prefix('admin')->group(function () {
 ```
 - - -
 ## ERD
-![Imgur](https://imgur.com/COqn6CZ.png)
+![Imgur](https://imgur.com/m8HRmEN)
 - - -
 ## 關聯式綱要圖
-![Imgur](https://imgur.com/VST3Euu.png)
+![Imgur](https://imgur.com/0ccVyjb)
 - - -
 ## 資料表欄位設計
-![Imgur](https://imgur.com/BaPSYkO.jpg)
+![Imgur](https://imgur.com/EEw8990)
 - - -
-![Imgur](https://imgur.com/yMpfw4D.jpg)
+![Imgur](https://imgur.com/LgLgalG)
 - - -
 
 
@@ -181,7 +176,7 @@ Route::prefix('admin')->group(function () {
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=33060
-    DB_DATABASE=final05
+    DB_DATABASE=final07
     DB_USERNAME=root
     DB_PASSWORD=root
 
